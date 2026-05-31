@@ -9,10 +9,11 @@ const {
   deleteEvent
 } = require("../controllers/eventController");
 
-router.post("/events", createEvent);
-router.get("/events", getEvents);
-router.get("/events/:id", getEvent);
-router.put("/events/:id", updateEvent);
-router.delete("/events/:id", deleteEvent);
+// FIXED ROUTES (IMPORTANT)
+router.post("/", createEvent);
+router.get("/", getEvents);
+router.get("/:id", getEvent);
+router.put("/:id", updateEvent);
+router.delete("/:id", deleteEvent);
 
 module.exports = router;
