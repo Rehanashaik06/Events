@@ -105,3 +105,21 @@ exports.deleteEvent = async (req, res) => {
     });
   }
 };
+
+// DELETE ALL EVENTS
+exports.deleteAllEvents = async (req, res) => {
+  try {
+    await Event.deleteMany({});
+
+    res.status(200).json({
+      success: true,
+      message: "All events deleted successfully"
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+};

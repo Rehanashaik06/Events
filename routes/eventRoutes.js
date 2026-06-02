@@ -6,14 +6,20 @@ const {
   getEvents,
   getEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  deleteAllEvents
 } = require("../controllers/eventController");
 
-// FIXED ROUTES (IMPORTANT)
 router.post("/", createEvent);
+
 router.get("/", getEvents);
+
 router.get("/:id", getEvent);
+
 router.put("/:id", updateEvent);
+
 router.delete("/:id", deleteEvent);
+
+router.delete("/", deleteAllEvents);
 
 module.exports = router;
