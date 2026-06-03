@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -22,17 +21,23 @@ app.use(express.json());
 ======================== */
 const connectDB = require("./config/db");
 
-connectDB().then(() => {
-  console.log("MongoDB Connected Successfully");
-}).catch((err) => {
-  console.error("MongoDB Connection Failed:", err);
-});
+connectDB()
+  .then(() => {
+    console.log("MongoDB Connected Successfully");
+  })
+  .catch((err) => {
+    console.error("MongoDB Connection Failed:", err);
+  });
 
 /* ========================
    ROUTES
 ======================== */
-// FIXED: proper route prefix
+
+// Events Routes
 app.use("/api/events", require("./routes/eventRoutes"));
+
+// Auth Routes
+app.use("/api/auth", require("./routes/authRoutes"));
 
 /* ========================
    HEALTH CHECK ROUTE
